@@ -5,6 +5,7 @@ Fill empty `alt` attributes with file name.
 
 ## Features
 This plugin, with no settings, is intended to (though it hasn't been fully tested yet) populate empty image alt attributes with the file name. It should act on: featured image, images, gallery.
+
 Its functionality is based on regular expressions. Every time an `alt=""` attribute is found, it is populated with the file name, excluding the extension.
 
 ## Installation and Usage
