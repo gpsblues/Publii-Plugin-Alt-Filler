@@ -13,3 +13,8 @@ Its functionality is based on regular expressions. Every time an `alt=""` attrib
 - Open Publii CMS and [install the plugin](https://getpublii.com/docs/plugins.html#installingplugins).
 - [Enable the plugin](https://getpublii.com/docs/plugins.html#enablingplugins).
 - Preview/Sync your website to see it in action.
+
+## Disclaimer
+This plugin is an unofficial extension for the [Publii CMS](https://getpublii.com/). I do not assume any responsibility for potential issues or malfunctions that may occur while using this plugin. Additionally, support for this plugin is not guaranteed.
+
+For official Publii resources, please visit the [Publii CMS Official Repository](https://marketplace.getpublii.com/plugins/).
