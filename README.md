@@ -1,4 +1,4 @@
-# Publii Plugin: alt="" Filler
+# Publii Plugin: `alt` Filler
 Fill empty `alt` attributes with image file name.
 
 <p><img height="100" alt="publii plugin" title="Plugin icons" src="https://raw.githubusercontent.com/gpsblues/Publii-Plugin-Alt-Filler/6b6049e2fe5059afa7fbc9a9bd814b27c53dfd29/.assets/thumbnail.svg"></p>
