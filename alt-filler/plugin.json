@@ -7,7 +7,6 @@
 	"scope": "site",
 	"minimumPubliiVersion": "0.40.0",
 	"usePluginSettingsView": false,
-    "previewNotRequired ": true,
     "messageInOptions": {
         "type": "info",
         "text": "This plugin populates empty alt='' attributes of <img> tags with the corresponding image file name."
