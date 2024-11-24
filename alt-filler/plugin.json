@@ -1,17 +1,25 @@
 {
-	"name": "Alt filler",
+	"name": "alt Filler",
 	"description": "Fill empty `alt` attributes with file name",
 	"license": "GPL-3.0",
 	"author": "Vittorio Ramponi - www.mywebpassion.it",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"scope": "site",
 	"minimumPubliiVersion": "0.40.0",
-	"usePluginSettingsView": true,
-    "useCustomCssForOptions": false,
+	"usePluginSettingsView": false,
+    "previewNotRequired ": true,
     "messageInOptions": {
         "type": "info",
-        "text": "This plugin, when enabled, should populate empty `alt` attributes in `<img>` tags with the corresponding file name. Let's test it! :)"
+        "text": "This plugin populates empty alt='' attributes of <img> tags with the corresponding image file name."
     },
     "config": [
+		{
+			"name": "",
+			"type": "separator",
+			"note": "The <a href='https://github.com/gpsblues/Publii-Plugin-Alt-Filler' title='Github repository'>Plugin alt Filler</a> processes featured images, single images, and galleries across all site pages. File names are adjusted for improved readability with the following enhancements:<ul><li>Removal of the file extension</li><li>Convert to lowercase with the first letter capitalized</li><li>Replacement of separators with spaces</li><li>Addition of a period at the end</li><li>Removal of the '-thumbnail' suffix for gallery images.</li></ul>Example before/after rendering:<br>&lt;img src=&quot;/media/posts/11/gallery/<strong>white-cloud-in-blue-sky-thumbnail.webp</strong>&quot; alt=&quot;&quot;&gt;<br>&lt;img src=&quot;/media/posts/11/gallery/<strong>white-cloud-in-blue-sky-thumbnail.webp</strong>&quot; alt=&quot;<strong>White cloud in blue sky.</strong>&quot;&gt;<br><br>Note:<br>The modification is applied only to the HTML output after rendering. The Publii's backend content will remain unchanged.",
+			"label": "",
+			"group": "",
+			"size": "no-line"
+		}
     ]
 }
