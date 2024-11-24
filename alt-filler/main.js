@@ -37,6 +37,9 @@ function fillEmptyImgAlt(html) {
             // Replace suffix '-thumbnail' in galleries
             fileName = fileName.replace('-thumbnail', '');
 
+            // Convert to lowercase with the first letter capitalized
+            fileName = fileName.charAt(0).toUpperCase() + fileName.slice(1).toLowerCase();
+
             // Replace ., -, _ with spaces
             fileName = fileName.replace(/[._-]/g, ' ');
             
