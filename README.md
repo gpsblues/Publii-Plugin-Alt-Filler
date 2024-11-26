@@ -12,8 +12,9 @@ This plugin, with no settings required, processes featured images, single images
 - Addition of a period at the end
 - Removal of the '-thumbnail' suffix for gallery images.
 
-### Exemple
+### Example
 `<img src="/media/posts/11/gallery/white-CLOUD-in-blue-sky-thumbnail.webp" alt="">`
+
 `<img src="/media/posts/11/gallery/white-CLOUD-in-blue-sky-thumbnail.webp" alt="white cloud in blue sky.">`
 
 ### Note
