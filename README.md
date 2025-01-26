@@ -14,7 +14,9 @@ This plugin, with no settings required, processes featured images, single images
 
 ### Example
 `<img src="/media/posts/11/gallery/white-CLOUD-in-blue-sky-thumbnail.webp" alt="">`
+
 becomes
+
 `<img src="/media/posts/11/gallery/white-CLOUD-in-blue-sky-thumbnail.webp" alt="White cloud in blue sky.">`
 
 ### Note
