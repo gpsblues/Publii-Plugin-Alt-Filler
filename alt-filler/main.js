@@ -1,5 +1,3 @@
-// https://github.com/GetPublii/Publii/discussions/1359
-
 class FillImgAlt {
     constructor (API, name, config) {
         this.API = API; 		// gives you an access to the plugins API functions
@@ -35,7 +33,7 @@ function fillEmptyImgAlt(html) {
             fileName = fileName.replace(/(?:[-_]\(\d+\)|[-_]\d+|\d+)$/, '') // remove final numbers "#", "_#", "-#", "(#)"
             fileName = fileName.replace(/%20/g, ' ');                       // change "%20" in " "
             fileName = fileName.replace(/%(?!20)[0-9a-fA-F]{2}/g, ' ');     // remove "%xx" url code
-            fileName = fileName.replace(/[._-,]/g, ' ');                    // change ".", "_", "-", "," in " "
+            fileName = fileName.replace(/[-._,]/g, ' ');                    // change "-", ".", "_", "," in " "
             fileName = fileName.replace(/[\[\]()!%?]/g, '');                // Remove "(", ")", "[", "]", "!", "?", "%"
             fileName = fileName.replace(/\s+/g, ' ');                       // change multiple spaces in " "
             fileName = fileName.slice(0, 124);                              // chars limit for alt attribute
