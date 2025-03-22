@@ -22,34 +22,32 @@ class FillImgAlt {
 
 function fillEmptyImgAlt(html) {
     return html.replace(
-        /<img([^>]*?)alt=""([^>]*?)>/g, // Find img tags with an empty alt attribute
-        (match, attributes1, attributes2) => {
-            
-            // Find the first value of src or srcset
+        /<img([^>]*?)((?:alt="")?)([^>]*?)>/g, 
+        (match, attributes1, altAttr, attributes2) => {
             const srcMatch = match.match(/src="([^"]+)"|srcset="([^"]+)"/);
-            if (!srcMatch) return match; // If src is not found, return the original tag
-
+            if (!srcMatch) return match;
+    
             const path = srcMatch[1] || srcMatch[2];
-            
-            // Extract the file name without extension
-            let fileName = path.split('/').pop().split('.').slice(0, -1).join('.'); 
-
-            // Replace suffix '-thumbnail' in galleries
+            let fileName = path.split('/').pop().split('.').slice(0, -1).join('.');
+    
+            // Pulizia del nome file
             fileName = fileName.replace('-thumbnail', '');
-
-            // Convert to lowercase with the first letter capitalized
-            fileName = fileName.charAt(0).toUpperCase() + fileName.slice(1).toLowerCase();
-
-            // Replace ., -, _ with spaces
-            fileName = fileName.replace(/[._-]/g, ' ');
-            
-            // Add final dot
-            fileName = fileName + '.'
-
-            // Reconstruct the tag with the updated alt attribute
-            return `<img${attributes1}alt="${fileName}"${attributes2}>`; 
+            fileName = fileName.replace(/(?:[-_]\(\d+\)|[-_]\d+|\d+)$/, '') // remove final numbers "#", "_#", "-#", "(#)"
+            fileName = fileName.replace(/%20/g, ' ');                       // change "%20" in " "
+            fileName = fileName.replace(/%(?!20)[0-9a-fA-F]{2}/g, ' ');     // remove "%xx" url code
+            fileName = fileName.replace(/[._-,]/g, ' ');                    // change ".", "_", "-", "," in " "
+            fileName = fileName.replace(/[\[\]()!%?]/g, '');                // Remove "(", ")", "[", "]", "!", "?", "%"
+            fileName = fileName.replace(/\s+/g, ' ');                       // change multiple spaces in " "
+            fileName = fileName.slice(0, 124);                              // chars limit for alt attribute
+            fileName = fileName.trim();
+    
+            // Se è vuoto, non aggiungere il punto finale
+            if (fileName) fileName = fileName.charAt(0).toUpperCase() + fileName.slice(1) + '.';
+    
+            // Se l'attributo alt è assente o vuoto, lo aggiungiamo
+            return `<img${attributes1} alt="${fileName}"${attributes2}>`;
         }
-    );
+    );  
 }
 
 module.exports = FillImgAlt;
