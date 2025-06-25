@@ -19,33 +19,39 @@ class FillImgAlt {
 }
 
 function fillEmptyImgAlt(html) {
-    return html.replace(
-        /<img([^>]*?)((?:alt="")?)([^>]*?)>/g, 
-        (match, attributes1, altAttr, attributes2) => {
-            const srcMatch = match.match(/src="([^"]+)"|srcset="([^"]+)"/);
-            if (!srcMatch) return match;
-    
-            const path = srcMatch[1] || srcMatch[2];
-            let fileName = path.split('/').pop().split('.').slice(0, -1).join('.');
-    
-            // Pulizia del nome file
-            fileName = fileName.replace('-thumbnail', '');
-            fileName = fileName.replace(/(?:[-_]\(\d+\)|[-_]\d+|\d+)$/, '') // remove final numbers "#", "_#", "-#", "(#)"
-            fileName = fileName.replace(/%20/g, ' ');                       // change "%20" in " "
-            fileName = fileName.replace(/%(?!20)[0-9a-fA-F]{2}/g, ' ');     // remove "%xx" url code
-            fileName = fileName.replace(/[-._,]/g, ' ');                    // change "-", ".", "_", "," in " "
-            fileName = fileName.replace(/[\[\]()!%?]/g, '');                // Remove "(", ")", "[", "]", "!", "?", "%"
-            fileName = fileName.replace(/\s+/g, ' ');                       // change multiple spaces in " "
-            fileName = fileName.slice(0, 124);                              // chars limit for alt attribute
-            fileName = fileName.trim();
-    
-            // Se è vuoto, non aggiungere il punto finale
-            if (fileName) fileName = fileName.charAt(0).toUpperCase() + fileName.slice(1) + '.';
-    
-            // Se l'attributo alt è assente o vuoto, lo aggiungiamo
-            return `<img${attributes1} alt="${fileName}"${attributes2}>`;
+    return html.replace(/<img\b[^>]*>/gi, (imgTag) => {
+        // If alt is already set (not empty), leave unchanged
+        if (/alt\s*=\s*["'][^"']+["']/i.test(imgTag)) return imgTag;
+
+        // Look for src="..." (we completely ignore srcset)
+        const srcMatch = imgTag.match(/src="([^"]+)"/i);
+        if (!srcMatch) return imgTag;
+
+        const path = srcMatch[1];
+        let fileName = path.split('/').pop().split('.').slice(0, -1).join('.');
+
+        // File name cleaning
+        fileName = fileName.replace('-thumbnail', '');
+        fileName = fileName.replace(/(?:[-_]\(\d+\)|[-_]\d+|\d+)$/, '') // remove final numbers "#", "_#", "-#", "(#)"
+        fileName = fileName.replace(/%20/g, ' ');                       // change "%20" in " "
+        fileName = fileName.replace(/%(?!20)[0-9a-fA-F]{2}/g, ' ');     // remove "%xx" url code
+        fileName = fileName.replace(/[-._,]/g, ' ');                    // change "-", ".", "_", "," in " "
+        fileName = fileName.replace(/[\[\]()!%?]/g, '');                // Remove "(", ")", "[", "]", "!", "?", "%"
+        fileName = fileName.replace(/\s+/g, ' ');                       // change multiple spaces in " "
+        fileName = fileName.slice(0, 124);                              // chars limit for alt attribute
+
+        if (fileName) {
+            fileName = fileName.charAt(0).toUpperCase() + fileName.slice(1) + '.';
         }
-    );  
+
+        // If alt="" → replace the value
+        if (/alt\s*=\s*["']["']/i.test(imgTag)) {
+            return imgTag.replace(/alt\s*=\s*["']["']/i, `alt="${fileName}"`);
+        }
+
+        // If alt doesn't exist → insert it after <img
+        return imgTag.replace(/<img\b/i, `<img alt="${fileName}"`);
+    });
 }
 
 module.exports = FillImgAlt;
