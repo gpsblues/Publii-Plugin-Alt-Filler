@@ -3,6 +3,8 @@ This plugin automatically populates empty `alt` attributes (`alt=''`) and adds m
 
 <p><img height="100" alt="publii plugin" title="Plugin icons" src="https://raw.githubusercontent.com/gpsblues/Publii-Plugin-Alt-Filler/6b6049e2fe5059afa7fbc9a9bd814b27c53dfd29/.assets/thumbnail.svg"></p>
 
+If you use this plugin, consider giving it a ⭐ on GitHub: it's the only way for me to know if this work is appreciated. Thank you!
+
 ## Features
 This plugin, with no settings required, processes featured images, single images, and galleries across all site pages. File names are adjusted for improved readability with the following enhancements:
 
