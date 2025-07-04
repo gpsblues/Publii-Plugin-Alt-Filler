@@ -1,7 +1,7 @@
 # Publii Plugin: `alt` Filler 
 This plugin automatically populates empty `alt` attributes (`alt=''`) and adds missing `alt` attributes to `<img>` tags, using the corresponding image file name as the value. It ensures your images are more accessible and SEO-friendly.
 
-<p><img height="100" alt="publii plugin" title="Plugin icons" src="https://raw.githubusercontent.com/gpsblues/Publii-Plugin-Alt-Filler/6b6049e2fe5059afa7fbc9a9bd814b27c53dfd29/.assets/thumbnail.svg"></p>
+<p><img height="100" alt="publii plugin" title="Plugin icons" src="https://raw.githubusercontent.com/gpsblues/Publii-Plugin-Alt-Filler/6b6049e2fe5059afa7fbc9a9bd814b27c53dfd29/.assets/thumbnail.svg" style="height:100px;"></p>
 
 If you use this plugin, consider giving it a ⭐ on GitHub: it's the only way for me to know if this work is appreciated. Thank you!
 
